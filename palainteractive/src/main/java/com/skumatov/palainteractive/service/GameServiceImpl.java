@@ -1,5 +1,7 @@
 package com.skumatov.palainteractive.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,13 +70,5 @@ public class GameServiceImpl implements GameService {
 		return "Deletet: " + theId;
 	}
 	
-	@Override
-	@Transactional
-	public void save(Game theGame) {
-		//get the current hibernate session
-		Session currentSession = entityManager.unwrap(Session.class);
-		currentSession.save(theGame);
-		
-	}
 
 }

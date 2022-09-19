@@ -46,6 +46,21 @@ public class GameDetail {
 		this.type = type;
 	}
 
+	public GameDetail(String name, Date created, String type, Game game) {
+		this.name = name;
+		this.created = created;
+		this.type = type;
+		this.game = game;
+	}
+
+	public GameDetail(Long detail_id, String name, Date created, String type, Game game) {
+		this.detail_id = detail_id;
+		this.name = name;
+		this.created = created;
+		this.type = type;
+		this.game = game;
+	}
+
 	public Game getGame() {
 		return game;
 	}

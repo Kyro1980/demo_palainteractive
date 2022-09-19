@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skumatov.palainteractive.entity.Game;
+import com.skumatov.palainteractive.entity.GameDetail;
+import com.skumatov.palainteractive.entity.Player;
 import com.skumatov.palainteractive.rest.error.EntityDetailNotFoundException;
 import com.skumatov.palainteractive.rest.error.EntityErrorResponse;
 import com.skumatov.palainteractive.rest.error.GameDetailErrorResponse;
@@ -51,4 +56,18 @@ public class GameRestController {
 	public String deleteGame(@PathVariable long detailsId) {
 		return gameDao.deleteById(detailsId);
 	}
+	
+//	@CrossOrigin(origins = "*")
+//	@PostMapping("/games")
+//	public Game addGame(@RequestBody Game theGamel) {
+//		//TO DO add game 
+//		return null;
+//	}
+//	
+//	@CrossOrigin(origins = "*")
+//	@PutMapping("/games")
+//	public Game updateGame(@RequestBody Game theGame) {
+//		//TO DO update existing game  
+//		return null;
+//	}
 }

@@ -11,5 +11,4 @@ public interface GameService {
 	public List<Game> findAll();
 	public Game findById(Long id);
 	public String deleteById(Long theId);
-	public void save(Game theGame);
 }

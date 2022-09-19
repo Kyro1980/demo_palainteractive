@@ -7,5 +7,6 @@ import com.skumatov.palainteractive.entity.Player;
 public interface PlayerService {
 	public List<Player> findAll();
 	public String deleteById(Long theId);
+	public Player findById(Long theId);
 	public void save(Player thePlayer);
 }

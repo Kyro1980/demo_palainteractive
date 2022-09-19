@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skumatov.palainteractive.entity.Game;
 import com.skumatov.palainteractive.entity.Player;
+import com.skumatov.palainteractive.rest.error.EntityDetailNotFoundException;
 import com.skumatov.palainteractive.service.PlayerService;
 
 @RestController
@@ -40,5 +42,17 @@ public class PlayerRestController {
 		thePlayer.setPlayer_id((long) 0);
 		playerDAO.save(thePlayer);
 		return thePlayer;
+	}
+	
+	@CrossOrigin(origins = "*")
+    @GetMapping("/players/{playerId}")
+	public Player getPlacement(@PathVariable long playerId) {
+		Player thePlayer= playerDAO.findById(playerId);
+	    	
+	    if(thePlayer == null) {
+	    	throw new EntityDetailNotFoundException("Player id not found - " +playerId);
+	    }
+	    	
+	     return thePlayer;	
 	}
 }

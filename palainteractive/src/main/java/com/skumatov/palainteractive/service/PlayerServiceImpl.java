@@ -4,21 +4,27 @@ package com.skumatov.palainteractive.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.skumatov.palainteractive.entity.Game;
 import com.skumatov.palainteractive.entity.Player;
+import com.skumatov.palainteractive.repository.PlayerDaoRepository;
 import com.skumatov.palainteractive.rest.error.EntityDetailNotFoundException;
 
 @Repository
 public class PlayerServiceImpl implements PlayerService{
 
+	@Autowired
+	PlayerDaoRepository playerDaoRepository;
+	
 	//persistence context
 	private EntityManager entityManager;
 		
@@ -69,4 +75,19 @@ public class PlayerServiceImpl implements PlayerService{
 		currentSession.save(thePlayer);
 		
 	}
+
+	@Override
+	@Transactional
+	public Player findById(Long theId) {
+		Optional<Player> result = playerDaoRepository.findById(theId);
+		Player thePlayer = null;
+		if (result.isPresent()) {
+			thePlayer = result.get();
+			
+		}else {
+			return thePlayer;
+		}
+		return thePlayer;
+	}
+	
 }
